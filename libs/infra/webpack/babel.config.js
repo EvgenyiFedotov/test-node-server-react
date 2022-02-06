@@ -12,6 +12,5 @@ module.exports = () => ({
     ["@babel/plugin-transform-object-assign"],
     ["@babel/transform-runtime", { useESModules: false, regenerator: true }],
     ["@babel/plugin-syntax-dynamic-import"],
-    ["@loadable/babel-plugin"],
   ],
 });

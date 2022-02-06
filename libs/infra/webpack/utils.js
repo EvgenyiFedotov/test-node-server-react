@@ -1,4 +1,5 @@
 const { resolve: resolvePath } = require("path");
+const { getDefinePlugin } = require("./plugins");
 
 function getAppConstants(options = {}) {
   const { url, protocol, hostname, port } = options;
@@ -30,9 +31,19 @@ function resolveDirname(path = "") {
   return resolvePath(__dirname, path);
 }
 
+function setupAppConfig(config, options = {}) {
+  const appConstants = getAppConstants(options);
+  const definePlugin = getDefinePlugin(appConstants);
+
+  config.plugins.push(definePlugin);
+
+  return config;
+}
+
 module.exports = {
   resolvePath,
   getAppConstants,
   resolveCwd,
   resolveDirname,
+  setupAppConfig,
 };
